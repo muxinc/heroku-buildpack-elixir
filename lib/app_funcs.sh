@@ -121,5 +121,7 @@ function create_sentry_release() {
   if [ -n "$SENTRY_API_KEY" ]; then
     output_section "Creating Sentry release for source-version ${SOURCE_VERSION}"
     curl -s -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${SENTRY_API_KEY}" -H "Cache-Control: no-cache" -d "{ \"version\": \"${SOURCE_VERSION}\", \"ref\": \"${SOURCE_VERSION}\", \"url\": \"${SOURCE_URL}\"}" "https://sentry.io/api/0/projects/${SENTRY_ORG}/${SENTRY_PROJECT}/releases/"  || exit 1
+  else
+    output_section "Skipping Sentry release tagging"
   fi
 }
