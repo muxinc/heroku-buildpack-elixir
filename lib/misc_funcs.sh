@@ -68,6 +68,11 @@ function export_mix_env() {
   output_line "* MIX_ENV=${MIX_ENV}"
 }
 
+function export_source_version() {
+  export SOURCE_VERSION="${SOURCE_VERSION}"
+  output_line "* SOURCE_VERSION=${SOURCE_VERSION}"
+}
+
 function check_stack() {
   if [ "${STACK}" = "cedar" ]; then
     echo "ERROR: cedar stack is not supported, upgrade to cedar-14"
